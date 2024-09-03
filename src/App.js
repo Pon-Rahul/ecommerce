@@ -1,9 +1,10 @@
-import './App.css';
+import "./App.css";
+import Root from "./Roots";
 
 function App() {
   return (
     <div>
-    hi
+      <Root/>
     </div>
   );
 }
