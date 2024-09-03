@@ -1,0 +1,115 @@
+.flex{
+    display: flex;
+    justify-content: space-around;
+}
+
+.empty{
+    border: 1px solid #000;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+    border-radius: 8px;
+    font-size: large;
+    font-family: 'Times New Roman';
+    margin-top: 2%;
+    padding: 8px;
+    background-color: #fff;
+    border-color: #fff;
+    width: 100%;
+    margin-left: 15%;
+}
+
+.cart{
+    border: 1px solid #000;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+    border-radius: 8px;
+    font-size: large;
+    font-family: 'Times New Roman';
+    margin-top: 2%;
+    padding: 8px;
+    background-color: #fff;
+    border-color: #fff;
+    width: 100%;
+    margin-left: 2%;
+    display: flex;
+    gap: 120px;
+}
+
+.list{
+  display: flex;
+  flex-direction: column;
+}
+
+.proceed{
+    border: 1px solid #000;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+    border-radius: 8px;
+    font-size: large;
+    font-family: 'Times New Roman';
+    margin-top: 2%;
+    padding: 8px;
+    background-color: #fff;
+    border-color: #fff;
+    width: 20%;
+    height: 400px;
+    margin-left: 8%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+}
+
+.button-33 {
+    background-color: #fff000;
+    border-radius: 24px;
+    color: #000000;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 12px ;
+    text-align: center;
+    transition: 200ms;
+    width: 100%;
+    box-sizing: border-box;
+    border: 0;
+    font-size: 12px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+  
+  .button-33:not(:disabled):hover,
+  .button-33:not(:disabled):focus {
+    outline: 0;
+    background: #f4e603;
+    box-shadow: 0 0 0 2px rgba(0,0,0,.2), 0 3px 8px 0 rgba(0,0,0,.15);
+  }
+  
+.product_one{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: nowrap;
+}
+
+.single{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.cart_img{
+    width: 400px;
+    height: 250px;
+}
+
+.cart_details{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    flex-wrap: nowrap;
+}
+
+.price{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    flex-wrap: nowrap;
+}
