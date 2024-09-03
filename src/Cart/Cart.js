@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Cart.css";
 import Footer from "../Footer/Footer";
 import items from "../Product";
+import Header from "../Header/Header";
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -28,25 +29,39 @@ const Cart = () => {
   };
 
   // Calculate subtotal dynamically based on quantities state
-  const subtotal = cartItems.reduce((total, itemIndex, cartIndex) => 
-    total + items[itemIndex].price * (quantities[cartIndex] || 1), 0);
+  const subtotal = cartItems.reduce(
+    (total, itemIndex, cartIndex) =>
+      total + items[itemIndex].price * (quantities[cartIndex] || 1),
+    0
+  );
 
   // Calculate total quantity of items in the cart
-  const totalQuantity = cartItems.reduce((total, itemIndex, cartIndex) => 
-    total + (quantities[cartIndex] || 1), 0);
+  const totalQuantity = cartItems.reduce(
+    (total, itemIndex, cartIndex) => total + (quantities[cartIndex] || 1),
+    0
+  );
 
   return (
     <div>
+      <div>
+        <Header />
+      </div>
       <div className="flex">
         <div className="list">
-        <div className="empty">
-        <div>Your Cart is empty</div>
-        </div>
+          {
+            //   <div className="empty">
+            // <div>Your Cart is empty</div>
+            // </div>
+          }
           {cartItems.map((itemIndex, cartIndex) => (
             <div className="cart" key={cartIndex}>
               <div className="product_one">
                 <div>
-                  <img src={items[itemIndex].image} alt="cart" className="cart_img" />
+                  <img
+                    src={items[itemIndex].image}
+                    alt="cart"
+                    className="cart_img"
+                  />
                 </div>
                 <div className="cart_details">
                   <div>{items[itemIndex].name}</div>

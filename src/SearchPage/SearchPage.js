@@ -3,6 +3,7 @@ import "./SearchPage.css";
 import items from "../Product";
 // import { useNavigate } from "react-router-dom";
 import Footer from "../Footer/Footer";
+import Header from "../Header/Header";
 
 const SearchPage = () => {
   const [product, setProduct] = useState(items);
@@ -19,6 +20,9 @@ const SearchPage = () => {
   
   return (
     <div>
+    <div>
+    <Header />
+    </div>
       <div>
       {product.map((o, i) => (
         <div className="product" key={i}>
