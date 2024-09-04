@@ -3,12 +3,18 @@ import "./Payment.css";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import items from "../Product";
+import { useNavigate } from "react-router-dom";
 
 const Payment = () => {
+  const navigate = useNavigate()
   const [cartItems, setCartItems] = useState([]);
   const sub = 120;
   const [subtotal, setSubtotal] = useState(0);
 
+   const Pay = () =>{
+    alert("Order placed successfully");
+    navigate("/search")
+   }
   useEffect(() => {
     const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
     setCartItems(storedCart);
@@ -18,7 +24,6 @@ const Payment = () => {
     }
   }, []);
 
-  console.log(subtotal, cartItems);
   return (
     <div>
       <div>
@@ -38,7 +43,7 @@ const Payment = () => {
                 </div>
                 <div className="cart_details">
                   <div>{items[itemIndex].name}</div>
-                  <div>Eligible for FREE Shipping</div>
+                  <div className="shipping">Eligible for FREE Shipping</div>
                   <div></div>
                 </div>
               </div>
@@ -51,23 +56,42 @@ const Payment = () => {
             </div>
           ))}
         </div>
-      <div className= "pay_box">
-        <div>Order Summary</div>
-        <div>Items:{subtotal}</div>
-        <div>Delivery:{sub}</div>
-        <div>Total:{subtotal + sub}</div>
-        <div>Discount:-{sub}</div>
-        <div>Order Total:{subtotal}</div>
-        <div>
-          Choose a payment method to continue checking out. You will still have
-          a chance to review and edit your order before it is final
+        <div className="pay_box">
+          <div className="summary">Order Summary</div>
+          <div className="billbox">
+            <div>Items:</div>
+            <div>₹{subtotal}</div>
+          </div>
+          <div className="billbox">
+            <div>Delivery:</div>
+            <div>₹{sub}</div>
+          </div>
+          <div className="billbox">
+            <div>Total:</div>
+            <div>₹{subtotal + sub}</div>
+          </div>
+          <div className="billbox">
+            <div>Discount:</div>
+            <div>- ₹{sub}</div>
+          </div>
+          <div className="bill_amount">
+            <div>Order Total:</div>
+            <div>₹{subtotal}</div>
+          </div>
+          <div>
+            Choose a payment method to continue checking out. You will still
+            have a chance to review and edit your order before it is final
+          </div>
+          <div>
+            <button
+              type="button"
+              className="button-33"
+              onClick={() => Pay()}
+            >
+              Proceed to Buy
+            </button>
+          </div>
         </div>
-        <div>
-          <button type="button" className="button-33">
-            Proceed to Buy
-          </button>
-        </div>
-      </div>
       </div>
       <div>
         <Footer />

@@ -15,6 +15,7 @@ const Header = () => {
     setCartItems(storedCart);
   }, []);
 
+  
   useEffect(() => {
     if (searchQuery) {
       const results = items.filter(item =>

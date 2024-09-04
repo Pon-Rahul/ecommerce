@@ -5,7 +5,6 @@ import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 
 const SearchPage = () => {
-  const [product, setProduct] = useState(items);
   const [cart, setCart] = useState([]);
 
   useEffect(() => {
@@ -22,18 +21,19 @@ const SearchPage = () => {
         <Header />
       </div>
       <div>
-        {product.map((o, i) => (
+        {items.map((o, i) => (
           <div className="product" key={i}>
             <div>
               <img src={o.image} alt="background" className="thumbnail" />
             </div>
             <div className="details">
               <div>{o.name}</div>
+              <div className="instock">In stock</div>
               <div>
                 {" "}
                 ₹ {o.price} ({o.percentage} off)
               </div>
-              <div>FREE delivery on {o.date}</div>
+              <div className="delivery">FREE delivery on {o.date}</div>
               <div>
                 {cart.includes(i) ? (
                   <span>Added to cart</span>
