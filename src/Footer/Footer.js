@@ -5,7 +5,10 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="marquee">
-        <p>Get your Drone on exciting prizes...!</p>
+        <p>
+          Grab Great deals at exciting prices, Get your Drone on amazing
+          discounts...!
+        </p>
       </div>
     </footer>
   );

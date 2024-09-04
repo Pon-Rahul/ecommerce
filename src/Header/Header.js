@@ -1,26 +1,26 @@
 import React, { useEffect, useState } from "react";
- import "./Header.css";
- import { FaSearch } from "react-icons/fa";
+import "./Header.css";
+import { FaSearch } from "react-icons/fa";
 import { FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-const Header = ()  => {
-    const [cartItems, setCartItems] = useState([]);
+const Header = () => {
+  const [cartItems, setCartItems] = useState([]);
 
-    useEffect(() => {
-        const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
-        setCartItems(storedCart);
-    },[cartItems])
+  useEffect(() => {
+    const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
+    setCartItems(storedCart);
+  }, []);
 
   return (
     <div className="header">
-    <Link to="/">
-    <img
-      className="header__logo"
-      src="http://pngimg.com/uploads/amazon/amazon_PNG11.png"
-      alt ="logo"
-    />
-    </Link>
+      <Link to="/">
+        <img
+          className="header__logo"
+          src="http://pngimg.com/uploads/amazon/amazon_PNG11.png"
+          alt="logo"
+        />
+      </Link>
 
       <div className="header__search">
         <input className="header__searchInput" type="text" />
@@ -28,20 +28,15 @@ const Header = ()  => {
       </div>
 
       <div className="header__nav">
-        <Link>
-          <div  className="header__option">
-            <span className="header__optionLineOne">Hello rahul</span>
-            <span className="header__optionLineTwo">Accounts & list</span>
-          </div>
-        </Link>
+        <div className="header__option">
+          <span className="header__optionLineOne">Hello Rahul</span>
+          <span className="header__optionLineTwo">Accounts & list</span>
+        </div>
 
-        <Link>
-          <div className="header__option">
-            <span className="header__optionLineOne">Returns</span>
-            <span className="header__optionLineTwo">& Orders</span>
-          </div>
-        </Link>
-        
+        <div className="header__option">
+          <span className="header__optionLineOne">Returns</span>
+          <span className="header__optionLineTwo">& Orders</span>
+        </div>
 
         <div className="header__option">
           <span className="header__optionLineOne">Your</span>
@@ -50,15 +45,15 @@ const Header = ()  => {
 
         <Link to="/cart">
           <div className="header__optionBasket">
-          <FaShoppingCart />
+            <FaShoppingCart />
             <span className="header__optionLineTwo header__basketCount">
-            {cartItems.length}
+              {cartItems.length}
             </span>
           </div>
         </Link>
       </div>
     </div>
   );
-}
+};
 
 export default Header;
