@@ -3,14 +3,37 @@ import "./Header.css";
 import { FaSearch } from "react-icons/fa";
 import { FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import items from "../Product"; // Import your items array
 
 const Header = () => {
   const [cartItems, setCartItems] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredItems, setFilteredItems] = useState([]);
 
   useEffect(() => {
     const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
     setCartItems(storedCart);
   }, []);
+
+  useEffect(() => {
+    if (searchQuery) {
+      const results = items.filter(item =>
+        item.name.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      setFilteredItems(results);
+    } else {
+      setFilteredItems([]);
+    }
+  }, [searchQuery]);
+
+  const handleSearch = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const onItemClick = (itemName) => {
+    setSearchQuery(itemName);
+    setFilteredItems([]);
+  };
 
   return (
     <div className="header">
@@ -23,8 +46,27 @@ const Header = () => {
       </Link>
 
       <div className="header__search">
-        <input className="header__searchInput" type="text" />
+        <input
+          className="header__searchInput"
+          type="text"
+          placeholder="Search for items"
+          value={searchQuery}
+          onChange={handleSearch}
+        />
         <FaSearch className="header__searchIcon" />
+        {filteredItems.length > 0 && (
+          <div className="header__searchResults">
+            {filteredItems.map((item) => (
+              <div
+                key={item.id}
+                className="header__searchItem"
+                onClick={() => onItemClick(item.name)}
+              >
+                {item.name}
+              </div>
+            ))}
+          </div>
+        )}
       </div>
 
       <div className="header__nav">

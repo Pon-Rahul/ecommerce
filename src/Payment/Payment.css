@@ -1,0 +1,62 @@
+.pay_img{
+    width: 100px;
+    height: 50px;
+}
+
+.items{
+        display: flex;
+        flex-direction: column;
+}
+
+.exit_list{
+    border: 1px solid #000;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+    border-radius: 8px;
+    font-size: 12px;
+    font-family: 'Times New Roman';
+    margin-top: 2%;
+    padding: 8px;
+    background-color: #fff;
+    border-color: #fff;
+    width: 80%;
+    margin-left: 2%;
+    display: flex;
+    gap: 120px;
+}
+
+.date{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 70px;
+}
+
+.img_space{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: nowrap;
+    gap: 12px;
+}
+
+.final_flex{
+    display: flex;
+}
+
+.pay_box{
+    border: 1px solid #000;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: 'Times New Roman';
+    margin-top: 2%;
+    padding: 8px;
+    background-color: #fff;
+    border-color: #fff;
+    width: 20%;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+}

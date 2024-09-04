@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import "./Cart.css";
 import Footer from "../Footer/Footer";
-import items from "../Product";
 import Header from "../Header/Header";
+import items from "../Product";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
+  const navigate = useNavigate();
   const [cartItems, setCartItems] = useState([]);
   const [quantities, setQuantities] = useState({});
+  const [subtotal, setSubtotal] = useState(0);
 
   useEffect(() => {
     const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -18,6 +21,12 @@ const Cart = () => {
       initialQuantities[i] = 1; // default quantity is 1
     });
     setQuantities(initialQuantities);
+
+    // Retrieve the subtotal from localStorage
+    const storedSubtotal = localStorage.getItem("subtotal");
+    if (storedSubtotal) {
+      setSubtotal(parseFloat(storedSubtotal));
+    }
   }, []);
 
   const handleQuantityChange = (cartIndex, event) => {
@@ -28,31 +37,29 @@ const Cart = () => {
     }));
   };
 
-  // Calculate subtotal dynamically based on quantities state
-  const subtotal = cartItems.reduce(
-    (total, itemIndex, cartIndex) =>
-      total + items[itemIndex].price * (quantities[cartIndex] || 1),
-    0
-  );
+  useEffect(() => {
+    const newSubtotal = cartItems.reduce(
+      (total, itemIndex, cartIndex) =>
+        total + items[itemIndex].price * (quantities[cartIndex] || 1),
+      0
+    );
+    setSubtotal(newSubtotal);
+    localStorage.setItem("subtotal", newSubtotal.toString());
+  }, [quantities, cartItems]);
 
-  // Calculate total quantity of items in the cart
   const totalQuantity = cartItems.reduce(
-    (total, itemIndex, cartIndex) => total + (quantities[cartIndex] || 1),
+    (total, itemIndex, cartIndex) =>
+      total + (quantities[cartIndex] || 1),
     0
   );
 
   return (
     <div>
-      <div>
+    <div>
         <Header />
       </div>
       <div className="flex">
         <div className="list">
-          {
-            //   <div className="empty">
-            // <div>Your Cart is empty</div>
-            // </div>
-          }
           {cartItems.map((itemIndex, cartIndex) => (
             <div className="cart" key={cartIndex}>
               <div className="product_one">
@@ -109,7 +116,7 @@ const Cart = () => {
             up).
           </div>
           <div>
-            <button type="button" className="button-33">
+            <button type="button" className="button-33" onClick={() => navigate("/payment")}>
               Proceed to Buy
             </button>
           </div>
