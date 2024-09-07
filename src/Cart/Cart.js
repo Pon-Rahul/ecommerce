@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Cart.css";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
-import items from "../Product";
+import {items} from "../Product";
 import { useNavigate } from "react-router-dom";
 
 const Cart = () => {

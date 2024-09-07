@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Payment.css";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
-import items from "../Product";
+import {items} from "../Product";
 import { useNavigate } from "react-router-dom";
 
 const Payment = () => {

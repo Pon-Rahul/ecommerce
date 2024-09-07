@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from "react";
 import "./SearchPage.css";
-import items from "../Product";
+import { items } from "../Product";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 
 const SearchPage = () => {
   const [cart, setCart] = useState([]);
+  const [category, setCategory] = useState('all');  // Default is 'all'
+
+  // Filter function based on category
+  const filteredItems = category === 'all' ? items : items.filter(item => item.category === category);
+
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
@@ -18,10 +23,10 @@ const SearchPage = () => {
   return (
     <div>
       <div>
-        <Header />
+        <Header setCategory={setCategory}/>
       </div>
       <div>
-        {items.map((o, i) => (
+        {filteredItems.map((o, i) => (
           <div className="product" key={i}>
             <div>
               <img src={o.image} alt="background" className="thumbnail" />
